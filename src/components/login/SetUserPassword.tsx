@@ -50,7 +50,6 @@ export default function SetUserPassword({
     onChange({ [field]: value });
   };
 
-  const passwordValid = data.password;
   const passwordsMatch =
     data.password && data.confirmPassword && data.password === data.confirmPassword;
 
