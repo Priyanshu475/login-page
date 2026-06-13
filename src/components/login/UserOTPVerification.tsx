@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import StepNavigation from "./StepNavigation";
+import "./UserOTPVerification.scss";
 
 interface FormData {
   otp: string[];
@@ -64,7 +65,7 @@ export default function UserOTPVerification({
       </p>
 
       <div className="mb-4">
-        <div className="flex gap-16 sm:gap-10 mb-2">
+        <div className="flex gap-4 mb-4">
           {otp.map((digit, i) => (
             <input
               key={i}
@@ -75,22 +76,18 @@ export default function UserOTPVerification({
               value={digit}
               onChange={(e) => handleChange(i, e.target.value)}
               onKeyDown={(e) => handleKeyDown(i, e)}
-              className={`w-12 h-12 sm:w-20 sm:h-20 text-center text-lg font-semibold rounded-xl bg-white transition-colors outline-none border-2 ${
-                digit
-                  ? "border-primary text-primary"
-                  : "border-gray-200 text-foreground"
-              } focus:border-primary`}
+              className={`otp-input ${digit ? "filled" : ""}`}
             />
           ))}
         </div>
         {error && <p className="text-xs text-destructive mt-2">{error}</p>}
       </div>
 
-      <p className="text-sm text-label mx-auto">
-        Did not receive OTP?{" "}
+      <p className="text-sm text-label">
+        Did not receive OTP ?{" "}
         <button
           type="button"
-          className="text-primary hover:font-bold"
+          className="text-primary hover:text-blue-600"
         >
           Resend OTP
         </button>

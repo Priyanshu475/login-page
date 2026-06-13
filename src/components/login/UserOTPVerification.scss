@@ -1,0 +1,25 @@
+.otp-input {
+  width: 70px;
+  height: 70px;
+  border-radius: 12px;
+  border: 1px solid #b3d9f2;
+  background-color: white;
+  text-align: center;
+  font-size: 1.125rem;
+  font-weight: 400;
+  color: #9ca3af;
+  transition: all 0.2s ease;
+  outline: none;
+  -webkit-font-smoothing: antialiased;
+
+  &.filled {
+    border-color: #729cf0;
+    color: #132c4a;
+    font-weight: 400;
+  }
+
+  &:focus {
+    border-color: #729cf0;
+    font-weight: 400;
+  }
+}
