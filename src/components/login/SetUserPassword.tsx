@@ -54,11 +54,18 @@ export default function SetUserPassword({
     data.password && data.confirmPassword && data.password === data.confirmPassword;
 
   return (
-    <div className="flex flex-col flex-1">
-      <h2 className="text-xl font-bold text-foreground mb-6">
-        Create Password for your account
-      </h2>
+  <div className="flex flex-col flex-1">
+    <h2 className="text-xl font-bold text-foreground mb-6">
+      Create Password for your account
+    </h2>
 
+    <form
+      className="flex flex-col flex-1"
+      onSubmit={(e) => {
+        e.preventDefault();
+        handleContinue();
+      }}
+    >
       <div className="space-y-5">
         <Input
           label="Enter new password"
@@ -68,6 +75,7 @@ export default function SetUserPassword({
           value={data.password || ""}
           onChange={(e) => handleChange("password", e.target.value)}
           error={errors.password || null}
+          autoComplete="new-password"
         />
 
         <Input
@@ -78,6 +86,7 @@ export default function SetUserPassword({
           value={data.confirmPassword || ""}
           onChange={(e) => handleChange("confirmPassword", e.target.value)}
           error={errors.confirmPassword || null}
+          autoComplete="new-password"
           helperText={
             data.confirmPassword && data.password !== data.confirmPassword ? "Both passwords must match" : undefined
           }
@@ -89,6 +98,7 @@ export default function SetUserPassword({
         onContinue={handleContinue}
         disableContinue={!passwordsMatch}
       />
-    </div>
-  );
+    </form>
+  </div>
+);
 }
